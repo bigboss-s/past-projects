@@ -1,0 +1,108 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Answer {
+  id: Int!
+  answerString: String!
+  isCorrect: Boolean
+  order: Float
+  questionId: Int!
+  question: Question!
+}
+
+type Question {
+  id: Int!
+  questionString: String!
+  type: QuestionType!
+  quizId: Int!
+  quiz: Quiz!
+  answers: [Answer!]!
+}
+
+enum QuestionType {
+  SINGLE_ANSWER
+  MULTIPLE_ANSWER
+  ORDERED_ANSWER
+  OPEN_ANSWER
+}
+
+type Quiz {
+  id: Int!
+  name: String!
+  description: String!
+  questions: [Question!]!
+}
+
+type ShowAnswerDTO {
+  id: Int!
+  answerString: String!
+}
+
+type ShowQuestionDTO {
+  id: Int!
+  questionString: String!
+  type: QuestionType!
+  answers: [ShowAnswerDTO]
+}
+
+type ShowQuizDTO {
+  id: Int!
+  name: String!
+  description: String!
+  questions: [ShowQuestionDTO!]!
+}
+
+type ResultDTO {
+  scoredPoints: Int!
+  maxPoints: Int!
+}
+
+type Query {
+  getQuizzes: [Quiz!]!
+  getFullQuiz(id: Int!): Quiz!
+  showQuiz(id: Int!): ShowQuizDTO!
+  checkQuiz(ReturnQuizDTO: ReturnQuizDTO!): ResultDTO!
+  questions: [Question!]!
+  answers: [Answer!]!
+}
+
+input ReturnQuizDTO {
+  id: Int!
+  questions: [ReturnQuestionDTO!]!
+}
+
+input ReturnQuestionDTO {
+  id: Int!
+  type: QuestionType!
+  answers: [ReturnAnswerDTO!]!
+}
+
+input ReturnAnswerDTO {
+  id: Int!
+  answerString: String
+  isCheckedTrue: Boolean
+  checkedOrder: Float
+}
+
+type Mutation {
+  createQuiz(CreateQuizInput: CreateQuizInput!): Quiz!
+}
+
+input CreateQuizInput {
+  name: String!
+  description: String!
+  questions: [CreateQuestionInput!]!
+}
+
+input CreateQuestionInput {
+  questionString: String!
+  type: QuestionType!
+  answers: [CreateAnswerInput!]!
+}
+
+input CreateAnswerInput {
+  answerString: String!
+  isCorrect: Boolean
+  order: Float
+}
