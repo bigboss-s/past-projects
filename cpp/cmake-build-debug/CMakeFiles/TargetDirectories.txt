@@ -1,0 +1,3 @@
+C:/Users/hikarucon992/Documents/java.pjatk/GraTurowa/cmake-build-debug/CMakeFiles/GraTurowa.dir
+C:/Users/hikarucon992/Documents/java.pjatk/GraTurowa/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/hikarucon992/Documents/java.pjatk/GraTurowa/cmake-build-debug/CMakeFiles/rebuild_cache.dir
